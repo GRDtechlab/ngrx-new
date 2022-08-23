@@ -1,0 +1,26 @@
+.booking-gradient {
+    background: rgb(21, 60, 154);
+    background: linear-gradient(
+      90deg,
+      rgba(21, 60, 154, 1) 33%,
+      rgba(186, 61, 129, 1) 63%
+    );
+    width: 25%;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .header-text {
+    color: #29295b;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .date-time-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #706d6d;
+    letter-spacing: 1px;
+  }
+  

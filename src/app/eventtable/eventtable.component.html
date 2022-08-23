@@ -1,0 +1,104 @@
+<div class="row mt-1 mb-1" style="margin-left:0px;">
+    <div class="col">
+        <table class="table" style="margin-top: 10px;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Race</th>
+                    <th scope="col">Amount (INR)</th>
+                    <th scope="col">Selected {{ totalTickets }}</th>
+                    <th scope="col">Total Amount {{ totalAmount }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticketData of ticketData; let i = index">
+                    <th scope="row">{{ ticketData.raceid }}</th>
+                    <td>{{ ticketData.race }}</td>
+                    <td>{{ ticketData.amount }}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="
+                  ticketData.quan = ticketData.quan + 1;
+                  ticketData.totalAmount = ticketData.amount * ticketData.quan
+                ">
+                            +
+                        </button>
+                        {{ ticketData.quan }}
+                        <button class="btn btn-danger" (click)="
+                  ticketData.quan = ticketData.quan - 1;
+                  ticketData.quan === -1
+                    ? (ticketData.quan = 0)
+                    : ticketData.quan;
+                  ticketData.totalAmount = ticketData.amount * ticketData.quan
+                ">
+                            -
+                        </button>
+                    </td>
+                    <td>{{ ticketData.totalAmount }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <button class="btn btn-danger mt-2 float-end" colspan="5" (click)="showRegister()"
+                            [disabled]="totalTickets > 0 ? false : true" style="margin-right: 50%;">
+                            Register
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="row mt-1 mb-1" style="margin-left:0px;">
+    <div class="col">
+        <table class="table" style="margin-top: 10px;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Race</th>
+                    <th scope="col">Amount (INR)</th>
+                    <th scope="col">Selected {{ totalTicketsTwo }}</th>
+                    <th scope="col">Total Amount {{ totalAmountTwo }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticketData of ticketDataTwo; let i = index">
+                    <th scope="row">{{ ticketData.raceid }}</th>
+                    <td>{{ ticketData.race }}</td>
+                    <td>{{ ticketData.amount }}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="
+                  ticketData.quan = ticketData.quan + 1;
+                  ticketData.totalAmount = ticketData.amount * ticketData.quan
+                ">
+                            +
+                        </button>
+                        {{ ticketData.quan }}
+                        <button class="btn btn-danger" (click)="
+                  ticketData.quan = ticketData.quan - 1;
+                  ticketData.quan === -1
+                    ? (ticketData.quan = 0)
+                    : ticketData.quan;
+                  ticketData.totalAmount = ticketData.amount * ticketData.quan
+                ">
+                            -
+                        </button>
+                    </td>
+                    <td>{{ ticketData.totalAmount }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <button class="btn btn-danger mt-2 float-end" colspan="5" (click)="showRegister()"
+                            [disabled]="totalTickets > 0 ? false : true" style="margin-right: 50%;">
+                            Register
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+

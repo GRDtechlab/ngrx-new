@@ -1,0 +1,54 @@
+<button class="btn btn-secondary" (click)="onBackNavigation()" style="margin-left: 10px;margin-top:10px;">Back</button>
+<hr style="background-color: black;">
+<div class="col-12">
+    <h2>Booking Deatils</h2>
+
+    <div *ngIf="ticketCounter$ | async as data" >
+        <h3>Total Amount : {{ getTotalAmount }}</h3>
+        <h3>Total Tickets : {{ numberOfTickets }}</h3>
+    </div>
+
+    <hr style="background-color: black;">
+    <h2>Previous Details</h2>
+
+    <div *ngFor="let ticket of form.value['theForm']; let i = index" class="list-group list-group-flush">
+        <div class="list-group-item" *ngIf="i < currentTicket">
+            <div class="form-row card">
+                <label class="card-header">
+                    <div class="card-title">Ticket {{ i + 1 }}</div>
+                </label>
+                <div class="form-group card-body">
+                    <span> Event Name : {{ ticket['eventName'] }} </span>
+                    <br />
+                    <span> Name : {{ ticket['fname'] }}&nbsp;{{ ticket['lname'] }} </span>
+                    <br />
+                    <span> Email : {{ ticket['email'] }} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr style="background-color: black;">
+    <div #divForm >
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <formly-form [form]="form" [model]="model" [fields]="fields1">
+            </formly-form> 
+
+            <button class="btn btn-warning float-right" [disabled]="!getFromState(currentTicket) || form.valid"
+            (click)="onNext($event)">
+                Next
+            </button>
+            <button class="btn btn-warning float-left" [disabled]="currentTicket < 1" (click)="onPrevious($event)">
+                Previous
+            </button>
+            
+            <div class="mt-2" *ngIf="form.valid">
+                <button class="btn btn-primary" type="submit" [disabled]="!form.valid" style="margin-left:30%;">
+                    Submit
+                </button>
+
+            </div>
+        </form>
+    </div>
+    <pre>{{form.value|json}}</pre>
+</div>

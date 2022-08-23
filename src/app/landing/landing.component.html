@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-md-4">
+
+
+        <hr><br>
+
+        <div *ngIf="isAuthenticated; then doSomething; else doSomethingElse;"></div>
+        <ng-template #doSomething>
+            <p>You logged in <em>{{user.email}}!</em></p>
+            <button class="btn btn-primary" (click)="logOut()">Log out</button>
+        </ng-template>
+        <ng-template #doSomethingElse>
+            <a [routerLink]="['/log-in']" class="btn btn-primary">Log in</a>
+            <!-- <a [routerLink]="['/sign-in']" class="btn btn-primary">Sign up</a> -->
+            <a [routerLink]="['/sign-up']" class="btn btn-primary">Sign up</a>
+
+        </ng-template>
+        <a [routerLink]="['/status']" class="btn btn-primary">Status</a>
+
+        <br><br><br>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Current State</h5>
+                <ul>
+                    <li><strong>isAuthenticated</strong> - {{isAuthenticated}}</li>
+                    <li><strong>user.email</strong> - {{ user?.email || 'null'}}</li>
+                    <li><strong>user.token</strong> - {{ user?.token || 'null'}}</li>
+                    <li><strong>errorMessage</strong> - {{ errorMessage || 'null'}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<nav class="navbar bg-dark" style="margin-top: 20px;">
+    <div class="container-fluid">
+        <h3 style="font-style:italic;color: rgb(255, 196, 0);">MARATHON EVENT HAPPENING THIS WEEK</h3>
+    </div>
+</nav>
+<div>
+    <div class="slides" style="margin-left:40px;margin-top: 20px;">
+        <ngb-carousel *ngIf="mobile" [showNavigationArrows]="showNavigationArrows" [animation]="animation"
+            [interval]="interval">
+            <ng-template ngbSlide *ngFor="let card of eventData; let i = index">
+                <div class="card item m-1 pointer" (click)="onCardClick(card)">
+                    <img class="card-img-top" [src]="card.imageSrc" alt="Card image cap" />
+
+                    <div class="card-body">
+                        <h6 class="card-title">{{ card.race }}</h6>
+                        <p class="card-text">
+                            <span>Price : RS {{ card.amount }}</span>
+                        </p>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+
+        <!-- Desktop section : multiple images per slide -->
+        <ngb-carousel *ngIf="!mobile" [showNavigationArrows]="showNavigationArrows" [animation]="animation"
+            [interval]="interval">
+            <ng-template ngbSlide *ngFor="let group of images; let j = index">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div *ngFor="let card of group; let i = index" class="card item pointer m-1"
+                        (click)="onCardClick(card)">
+                        <img class="card-img-top" [src]="card.imageSrc" alt="Card image cap" />
+
+                        <div class="card-body mb-5">
+                            <h6 class="card-title"> {{ card.race }}</h6>
+                            <p class="card-text">
+                                <span>Price : RS {{ card.amount }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+
+    </div>
+</div>
+
+<nav class="navbar bg-dark" style="margin-top: 20px;">
+    <div class="container-fluid">
+        <h3 style="font-style:italic;color: rgb(255, 196, 0);">MARATHON EVENT HAPPENING THIS MONTH</h3>
+    </div>
+</nav>
+<div>
+    <div class="slides" style="margin-left:40px;margin-top: 20px;">
+        <ngb-carousel *ngIf="mobile" [showNavigationArrows]="showNavigationArrows" [animation]="animation"
+            [interval]="interval">
+            <ng-template ngbSlide *ngFor="let card of eventDataTwo; let b = index">
+                <div class="card item m-1 pointer" (click)="onCardClick(card)">
+                    <img class="card-img-top" [src]="card.imageSrc" alt="Card image cap" />
+
+                    <div class="card-body">
+                        <h6 class="card-title">{{ card.race }}</h6>
+                        <p class="card-text">
+                            <span>Price : RS {{ card.amount }}</span>
+                        </p>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+
+        <!-- Desktop section : multiple images per slide -->
+        <ngb-carousel *ngIf="!mobile" [showNavigationArrows]="showNavigationArrows" [animation]="animation"
+            [interval]="interval">
+            <ng-template ngbSlide *ngFor="let groupTwo of imagesTwo; let a = index">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div *ngFor="let card of groupTwo; let b = index" class="card item pointer m-1"
+                        (click)="onCardClick(card)">
+                        <img class="card-img-top" [src]="card.imageSrc" alt="Card image cap" />
+
+                        <div class="card-body mb-5">
+                            <h6 class="card-title"> {{ card.race }}</h6>
+                            <p class="card-text">
+                                <span>Price : RS {{ card.amount }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+
+    </div>
+</div>
