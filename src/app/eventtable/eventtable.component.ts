@@ -64,7 +64,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
   }
 
   getEventDataByIdTwo() {
-    console.log('getEventDataById');
+    console.log('getEventDataById', this.eventId);
     let data: any[] = [];
     if (this.eventId === '4') {
       data = [
