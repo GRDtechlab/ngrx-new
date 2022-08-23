@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TicketService } from '../ticket.service';
 
@@ -12,26 +12,37 @@ export class EventtableComponent implements OnInit {
   id: any;
   eventName: any;
   eventId: any;
-  constructor(private activatedRoute: ActivatedRoute,private ticketSerive: TicketService,private router: Router) { }
+  slideNumber:number = -1;
+  constructor(private activatedRoute: ActivatedRoute,private ticketSerive: TicketService,private router: Router, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.myParam = params['id'];
+      console.log(this.myParam,'myParam')
       let id = this.myParam.split('-');
-      this.eventName = id.slice(0, -1).join(' ');
-      this.eventId = id[id.length - 1];
-      this.getEventDataById();
+      this.eventName = id.slice(0, -2).join(' ');
+      this.eventId = id[id.length - 3];
+      // console.log(id[id.length - 3])
+      this.slideNumber = id[id.length - 1];
+console.log('slideNumber ',+this.slideNumber === 2)
+      if(this.slideNumber === 1){ 
+        this.getEventDataById();
+      }else if(this.slideNumber === 2){
+        this.getEventDataByIdTwo();
+      }
     });
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.myParam = params['id'];
-      let id = this.myParam.split('-');
-      this.eventName = id.slice(0, -1).join(' ');
-      this.eventId = id[id.length - 1];
-      this.getEventDataByIdTwo();
-    });
+    // this.activatedRoute.params.subscribe((params: Params) => {
+    //   this.myParam = params['id'];
+    //   let id = this.myParam.split('-');
+    //   this.eventName = id.slice(0, -1).join(' ');
+    //   this.eventId = id[id.length - 1];
+    //   this.getEventDataByIdTwo();
+    // });
+    console.log('calling...')
+    this.cdr.markForCheck();
   }
   getEventDataById() {
-    console.log('getEventDataById');
+    console.log('getEventDataById', this.eventId);
     let data: any[] = [];
     if (this.eventId === '2') {
       data = [
