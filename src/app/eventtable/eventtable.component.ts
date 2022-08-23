@@ -64,7 +64,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
   }
 
   getEventDataByIdTwo() {
-    console.log('getEventDataById');
+    console.log('getEventDataById', this.eventId);
     let data: any[] = [];
     if (this.eventId === '4') {
       data = [
@@ -73,7 +73,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
         { raceid: 15, race: '333 Run', quan: 0, amount: 599 },
       ];
       console.log(this.eventId, 'eId');
-      this.ticketSerive.updateEventData(data);
+      this.ticketSerive.updateEventDataTwo(data);
     }
     if (this.eventId === '5') {
       data = [
@@ -81,7 +81,16 @@ console.log('slideNumber ',+this.slideNumber === 2)
         { raceid: 17, race: '555 Run', quan: 0, amount: 799 },
         { raceid: 18, race: '666 Run', quan: 0, amount: 899 },
       ];
-      this.ticketSerive.updateEventData(data);
+      this.ticketSerive.updateEventDataTwo(data);
+    }
+    if (this.eventId === '10') {
+      
+      data = [
+        { raceid: 19, race: '777 Run', quan: 0, amount: 699 },
+        { raceid: 20, race: '888 Run', quan: 0, amount: 799 },
+        { raceid: 21, race: '999 Run', quan: 0, amount: 899 },
+      ];
+      this.ticketSerive.updateEventDataTwo(data);
     }
   }
   onIncreament() {
