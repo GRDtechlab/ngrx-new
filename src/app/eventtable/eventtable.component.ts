@@ -25,9 +25,9 @@ export class EventtableComponent implements OnInit {
       // console.log(id[id.length - 3])
       this.slideNumber = id[id.length - 1];
 console.log('slideNumber ',+this.slideNumber === 2)
-      if(this.slideNumber === 1){ 
+      if(+this.slideNumber === 1){ 
         this.getEventDataById();
-      }else if(this.slideNumber === 2){
+      }else if(+this.slideNumber === 2){
         this.getEventDataByIdTwo();
       }
     });
