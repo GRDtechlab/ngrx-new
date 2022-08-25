@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { TicketService } from '../ticket.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class EventtableComponent implements OnInit {
   eventName: any;
   eventId: any;
   slideNumber:number = -1;
-  constructor(private activatedRoute: ActivatedRoute,private ticketSerive: TicketService,private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(private activatedRoute: ActivatedRoute,private ticketSerive: TicketService,private router: Router, private cdr: ChangeDetectorRef, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -104,9 +105,17 @@ console.log('slideNumber ',+this.slideNumber === 2)
     //  this.ticketService.countTicket.next(this.ticketService.count);
   }
   showRegister() {
+    if(!this.authService.getToken()){
+      // this.router.navigate(['/log-in'], )
+    }
+    console.log(this.myParam)
     console.log(this.ticketData);
     this.ticketSerive.isShow = true;
-    this.ticketSerive.countTicket.next(this.ticketData);
+    if(+this.slideNumber === 1){
+      this.ticketSerive.countTicket.next(this.ticketData);
+    }else if(+this.slideNumber === 2){
+      this.ticketSerive.countTicket.next(this.ticketDataTwo);
+    }
     this.router.navigate(['register']);
     // this.onIncreament();
   }

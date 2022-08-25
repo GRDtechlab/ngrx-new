@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { AuthService } from 'src/app/auth.service';
 import { Observable, of } from 'rxjs';
@@ -13,6 +13,7 @@ export class AuthEffects {
     private actions: Actions,
     private authService: AuthService,
     private router: Router,
+    private activatedRouter: ActivatedRoute
   ) {}
 
   // effects go here
@@ -39,8 +40,10 @@ export class AuthEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user:any) => {
+      let url = this.activatedRouter.snapshot.queryParams['returnUrl'];
+      console.log({url})
       localStorage.setItem('token', user.payload.token);
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl(url);
     })
   );
   @Effect({ dispatch: false })
