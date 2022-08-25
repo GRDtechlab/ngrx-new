@@ -59,4 +59,11 @@ export class EventdetComponent implements OnInit {
     //this.router.navigate(['v2', this.myParam, 'booking', 'tickets']);
     this.router.navigate(['eventtable', `${this.eventName}-${this.eventId}-slide-${this.slideEventNumber}`])
   }
+  onLogIn(){
+    this.activatedRoute.params.subscribe(param => {
+      localStorage.setItem('event-detail',param['id'])
+    // console.log({url})
+    this.router.navigate(['/log-in'], { queryParams: { returnUrl: `e/${param['id']}` }});
+  })
+  }
 }

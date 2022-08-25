@@ -1,123 +1,140 @@
-<div *ngIf="eventDetailData" class="row mt-5" style="margin-left: 300px;width: 70%;">
-    <div class="col-12 col-md-8 mb-5 mb-md-0" >
-        <div class="card">
-            <img [src]="eventDetailData.imageSrc" class="card-img-top" alt="..." />
-            <div class="card-body">
-                <p class="card-text header-text">
-                    {{ eventName }}
-                </p>
-                <div class="date-time-text">
-                    <i class="bi bi-calendar"></i> {{ eventDetailData.date }} |
-                    {{ eventDetailData.time }}
-                </div>
-            </div>
+<button class="btn btn-primary" (click)="onLogIn()">LogIn</button>
+<div
+  *ngIf="eventDetailData"
+  class="row mt-5"
+  style="margin-left: 300px; width: 70%"
+>
+  <div class="col-12 col-md-8 mb-5 mb-md-0">
+    <div class="card">
+      <img [src]="eventDetailData.imageSrc" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <p class="card-text header-text">
+          {{ eventName }}
+        </p>
+        <div class="date-time-text">
+          <i class="bi bi-calendar"></i> {{ eventDetailData.date }} |
+          {{ eventDetailData.time }}
         </div>
-
-        <div class="card mt-1 mb-2">
-            <div class="card-body">
-                <h3 class="header-text">Event Information</h3>
-                <p class="fw-bold">
-                    {{ eventName }} | {{ eventDetailData.registration }} Registration
-                </p>
-                <p>
-                    {{ eventDetailData.eventInfo }}
-                </p>
-                <p>
-                    <span>Date: </span>
-                    <span class="fw-bold"> {{ eventDetailData.date }} </span>
-                </p>
-                <hr />
-                <p class="fw-bold">Rules:</p>
-                <ol>
-                    <li *ngFor="let rules of eventDetailData.rules">{{ rules }}</li>
-                </ol>
-
-                <hr />
-                <p class="fw-bold">Attractions:</p>
-                <ul>
-                    <li *ngFor="let attraction of eventDetailData.attraction">
-                        {{ attraction }}
-                    </li>
-                </ul>
-
-                <hr />
-                <p class="fw-bold">Notes:</p>
-                <ul>
-                    <li *ngFor="let note of eventDetailData.notes">
-                        {{ note }}
-                    </li>
-                </ul>
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="col-12 col-md-4">
-        <div class="sticky-md-top fixed-bottom text-center">
-            <button class="btn booking-gradient mb-1" (click)="onRegister()" style="margin-left: 90px;margin-top: 177px;">
-                <span class="m-1"> Book Now</span>
-                <span> <i class="bi bi-arrow-right"></i> </span>
-            </button>
-        </div>
+
+    <div class="card mt-1 mb-2">
+      <div class="card-body">
+        <h3 class="header-text">Event Information</h3>
+        <p class="fw-bold">
+          {{ eventName }} | {{ eventDetailData.registration }} Registration
+        </p>
+        <p>
+          {{ eventDetailData.eventInfo }}
+        </p>
+        <p>
+          <span>Date: </span>
+          <span class="fw-bold"> {{ eventDetailData.date }} </span>
+        </p>
+        <hr />
+        <p class="fw-bold">Rules:</p>
+        <ol>
+          <li *ngFor="let rules of eventDetailData.rules">{{ rules }}</li>
+        </ol>
+
+        <hr />
+        <p class="fw-bold">Attractions:</p>
+        <ul>
+          <li *ngFor="let attraction of eventDetailData.attraction">
+            {{ attraction }}
+          </li>
+        </ul>
+
+        <hr />
+        <p class="fw-bold">Notes:</p>
+        <ul>
+          <li *ngFor="let note of eventDetailData.notes">
+            {{ note }}
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="sticky-md-top fixed-bottom text-center">
+      <button
+        class="btn booking-gradient mb-1"
+        (click)="onRegister()"
+        style="margin-left: 90px; margin-top: 177px"
+      >
+        <span class="m-1"> Book Now</span>
+        <span> <i class="bi bi-arrow-right"></i> </span>
+      </button>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="eventDetailDataTwo" class="row mt-5" style="margin-left: 300px;width: 70%;">
-    <div class="col-12 col-md-8 mb-5 mb-md-0" >
-        <div class="card">
-            <img [src]="eventDetailDataTwo.imageSrc" class="card-img-top" alt="..." />
-            <div class="card-body">
-                <p class="card-text header-text">
-                    {{ eventName }}
-                </p>
-                <div class="date-time-text">
-                    <i class="bi bi-calendar"></i> {{ eventDetailDataTwo.date }} |
-                    {{ eventDetailDataTwo.time }}
-                </div>
-            </div>
+<div
+  *ngIf="eventDetailDataTwo"
+  class="row mt-5"
+  style="margin-left: 300px; width: 70%"
+>
+  <div class="col-12 col-md-8 mb-5 mb-md-0">
+    <div class="card">
+      <img [src]="eventDetailDataTwo.imageSrc" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <p class="card-text header-text">
+          {{ eventName }}
+        </p>
+        <div class="date-time-text">
+          <i class="bi bi-calendar"></i> {{ eventDetailDataTwo.date }} |
+          {{ eventDetailDataTwo.time }}
         </div>
-
-        <div class="card mt-1 mb-2">
-            <div class="card-body">
-                <h3 class="header-text">Event Information</h3>
-                <p class="fw-bold">
-                    {{ eventName }} | {{ eventDetailDataTwo.registration }} Registration
-                </p>
-                <p>
-                    {{ eventDetailDataTwo.eventInfo }}
-                </p>
-                <p>
-                    <span>Date: </span>
-                    <span class="fw-bold"> {{ eventDetailDataTwo.date }} </span>
-                </p>
-                <hr />
-                <p class="fw-bold">Rules:</p>
-                <ol>
-                    <li *ngFor="let rules of eventDetailDataTwo.rules">{{ rules }}</li>
-                </ol>
-
-                <hr />
-                <p class="fw-bold">Attractions:</p>
-                <ul>
-                    <li *ngFor="let attraction of eventDetailDataTwo.attraction">
-                        {{ attraction }}
-                    </li>
-                </ul>
-
-                <hr />
-                <p class="fw-bold">Notes:</p>
-                <ul>
-                    <li *ngFor="let note of eventDetailDataTwo.notes">
-                        {{ note }}
-                    </li>
-                </ul>
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="col-12 col-md-4">
-        <div class="sticky-md-top fixed-bottom text-center">
-            <button class="btn booking-gradient mb-1" (click)="onRegister()" style="margin-left: 90px;margin-top: 177px;">
-                <span class="m-1"> Book Now</span>
-                <span> <i class="bi bi-arrow-right"></i> </span>
-            </button>
-        </div>
+
+    <div class="card mt-1 mb-2">
+      <div class="card-body">
+        <h3 class="header-text">Event Information</h3>
+        <p class="fw-bold">
+          {{ eventName }} | {{ eventDetailDataTwo.registration }} Registration
+        </p>
+        <p>
+          {{ eventDetailDataTwo.eventInfo }}
+        </p>
+        <p>
+          <span>Date: </span>
+          <span class="fw-bold"> {{ eventDetailDataTwo.date }} </span>
+        </p>
+        <hr />
+        <p class="fw-bold">Rules:</p>
+        <ol>
+          <li *ngFor="let rules of eventDetailDataTwo.rules">{{ rules }}</li>
+        </ol>
+
+        <hr />
+        <p class="fw-bold">Attractions:</p>
+        <ul>
+          <li *ngFor="let attraction of eventDetailDataTwo.attraction">
+            {{ attraction }}
+          </li>
+        </ul>
+
+        <hr />
+        <p class="fw-bold">Notes:</p>
+        <ul>
+          <li *ngFor="let note of eventDetailDataTwo.notes">
+            {{ note }}
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="sticky-md-top fixed-bottom text-center">
+      <button
+        class="btn booking-gradient mb-1"
+        (click)="onRegister()"
+        style="margin-left: 90px; margin-top: 177px"
+      >
+        <span class="m-1"> Book Now</span>
+        <span> <i class="bi bi-arrow-right"></i> </span>
+      </button>
+    </div>
+  </div>
 </div>
