@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 export interface tickdata {
   raceid: number;
@@ -23,4 +25,16 @@ export interface tickdataTwo {
 })
 export class AppComponent {
   title = 'ngrx';
+  constructor(private authService: AuthService, private router: Router){}
+  onLogIn(){
+    if(!this.authService.getToken()){
+      this.router.navigate(['/log-in'], { queryParams: { returnUrl: localStorage.getItem('redirectUrl') }});
+    }
+  }
+  get checkLoggedIn(){
+    return this.authService.getToken();
+  }
+  onLogout(){
+
+  }
 }

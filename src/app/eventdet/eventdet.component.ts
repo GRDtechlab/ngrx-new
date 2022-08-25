@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { DataService } from '../data.service';
 
 @Component({
@@ -17,11 +18,12 @@ export class EventdetComponent implements OnInit {
   eventDetailData: any;
   eventDetailDataTwo: any;
   slideEventNumber: number = -1;
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private dataService: DataService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private dataService: DataService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.myParam = params['id'];
+      localStorage.setItem('redirectUrl',`/e/${this.myParam}`)
       let id = this.myParam.split('-');
       this.eventName = id.slice(0, -1).join(' ');
       this.eventId = id[id.length - 1];
@@ -60,10 +62,15 @@ export class EventdetComponent implements OnInit {
     this.router.navigate(['eventtable', `${this.eventName}-${this.eventId}-slide-${this.slideEventNumber}`])
   }
   onLogIn(){
+    if(!this.authService.getToken()){
     this.activatedRoute.params.subscribe(param => {
       localStorage.setItem('event-detail',param['id'])
     // console.log({url})
     this.router.navigate(['/log-in'], { queryParams: { returnUrl: `e/${param['id']}` }});
   })
   }
+}
+get checkLoggedIn(){
+  return this.authService.getToken();
+}
 }
