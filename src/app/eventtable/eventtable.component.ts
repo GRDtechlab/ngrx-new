@@ -116,6 +116,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
     }else if(+this.slideNumber === 2){
       this.ticketSerive.countTicket.next(this.ticketDataTwo);
     }
+    localStorage.setItem('event-table', this.myParam)
     this.router.navigate(['register']);
     // this.onIncreament();
   }
@@ -126,7 +127,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
     return this.ticketSerive.count;
   }
   get ticketData() {
-    console.log('getTicket ', this.ticketSerive.getTicketData());
+    console.log('getTicket', this.ticketSerive.getTicketData());
     return this.ticketSerive.getTicketData();
   }
   get ticketDataTwo() {

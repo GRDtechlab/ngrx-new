@@ -528,6 +528,6 @@ export class RegisterComponent implements OnInit {
     // this.t.reset();
   }
   onBackNavigation() {
-    this.router.navigate(['..']);
+    this.router.navigate(['eventtable', `${localStorage.getItem('event-table')}`]);
   }
 }
