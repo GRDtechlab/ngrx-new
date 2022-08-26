@@ -20,6 +20,7 @@ export class EventtableComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.myParam = params['id'];
       console.log(this.myParam,'myParam')
+      localStorage.setItem('redirectUrl',`/eventtable/${this.myParam}`)
       let id = this.myParam.split('-');
       this.eventName = id.slice(0, -2).join(' ');
       this.eventId = id[id.length - 3];
