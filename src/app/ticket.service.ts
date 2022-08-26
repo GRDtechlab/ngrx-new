@@ -56,19 +56,27 @@ export class TicketService {
   finalData$: Observable<any> = this.finalData.asObservable();
   currentTicket: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   currentTicket$ = this.currentTicket.asObservable();
+
+  currentRaceId!: number;
+
   constructor() {}
-  updateEventData(data: any[]) {
+  updateEventData(data: any[], eventId?:any) {
     this.ticketData = data.map((data) => ({ totalAmount: 0, ...data }));
     console.log(this.ticketData);
+    this.currentRaceId = eventId
   }
-  updateEventDataTwo(data: any[]) {
+  updateEventDataTwo(data: any[], eventId?:any) {
     this.ticketDataTwo = data.map((data) => ({ totalAmount: 0, ...data }));
     console.log(this.ticketDataTwo);
+    this.currentRaceId = eventId;
   }
   getTicketData() {
     return this.ticketData;
   }
   getTicketDataTwo() {
     return this.ticketDataTwo;
+  }
+  getRaceId(){
+    return this.currentRaceId
   }
 }

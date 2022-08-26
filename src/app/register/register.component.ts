@@ -93,7 +93,6 @@ export class RegisterComponent implements OnInit {
             className: 'col-6',
             key: 'pnumber',
             type: 'input',
-
             templateOptions: {
               label: 'Phone number',
               placeholder: 'Enter your phone number',
@@ -447,7 +446,15 @@ export class RegisterComponent implements OnInit {
     }
 
     this.numberOfTickets = this.model.theForm.length;
+    console.log(this.ticketService.getRaceId(),'race ID')
+    this.updateFields1(this.ticketService.getRaceId());
     this.cdr.detectChanges();
+  }
+  updateFields1(raceId:number ){
+    if(raceId === 2){
+      let fieldId: any = this.fields1[0]['fieldArray']?.fieldGroup?.findIndex(data => data.key === 'pnumber');
+      this.fields1[0]['fieldArray']?.fieldGroup?.splice(fieldId,1);
+    }
   }
   getFromState(currentInex:any) {
     let formArrayControl = this.form['controls']['theForm'] as FormArray;

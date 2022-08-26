@@ -53,7 +53,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
         { raceid: 6, race: 'ghi Run', quan: 0, amount: 599 },
       ];
       console.log(this.eventId, 'eId');
-      this.ticketSerive.updateEventData(data);
+      this.ticketSerive.updateEventData(data, 2);
     }
     if (this.eventId === '3') {
       data = [
@@ -61,7 +61,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
         { raceid: 8, race: 'mno Run', quan: 0, amount: 799 },
         { raceid: 9, race: 'pqr Run', quan: 0, amount: 899 },
       ];
-      this.ticketSerive.updateEventData(data);
+      this.ticketSerive.updateEventData(data,3);
     }
   }
 
@@ -75,7 +75,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
         { raceid: 15, race: '333 Run', quan: 0, amount: 599 },
       ];
       console.log(this.eventId, 'eId');
-      this.ticketSerive.updateEventDataTwo(data);
+      this.ticketSerive.updateEventDataTwo(data,4);
     }
     if (this.eventId === '5') {
       data = [
@@ -83,7 +83,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
         { raceid: 17, race: '555 Run', quan: 0, amount: 799 },
         { raceid: 18, race: '666 Run', quan: 0, amount: 899 },
       ];
-      this.ticketSerive.updateEventDataTwo(data);
+      this.ticketSerive.updateEventDataTwo(data, 5);
     }
     if (this.eventId === '10') {
       
@@ -92,7 +92,7 @@ console.log('slideNumber ',+this.slideNumber === 2)
         { raceid: 20, race: '888 Run', quan: 0, amount: 799 },
         { raceid: 21, race: '999 Run', quan: 0, amount: 899 },
       ];
-      this.ticketSerive.updateEventDataTwo(data);
+      this.ticketSerive.updateEventDataTwo(data, 10);
     }
   }
   onIncreament() {
