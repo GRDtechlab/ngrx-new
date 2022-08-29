@@ -5,5 +5,7 @@
   Logout
 </button>
 
-<button class="btn btn-secondary" routerLink="sign-up">Sign Up</button>
+<button *ngIf="!checkLoggedIn" class="btn btn-secondary" routerLink="sign-up">
+  Sign Up
+</button>
 <router-outlet></router-outlet>
