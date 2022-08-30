@@ -43,6 +43,7 @@ export class AuthEffects {
       let url = this.activatedRouter.snapshot.queryParams['returnUrl'];
       console.log({url})
       localStorage.setItem('token', user.payload.token);
+      localStorage.setItem('user-email', user.payload.email);
       this.router.navigateByUrl(url);
     })
   );
@@ -75,6 +76,7 @@ SignUpSuccess: Observable<any> = this.actions.pipe(
   ofType(AuthActionTypes.SIGNUP_SUCCESS),
   tap((user:any) => {
     localStorage.setItem('token', user.payload.token);
+    localStorage.setItem('user-email', user.payload.email);
     this.router.navigateByUrl('/');
   })
 );

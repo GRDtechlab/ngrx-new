@@ -37,4 +37,8 @@ export class AppComponent {
   onLogout(){
 
   }
+  getUserName(){
+    console.log (localStorage.getItem('user-email'));
+    return localStorage.getItem('user-email')
+  }
 }
