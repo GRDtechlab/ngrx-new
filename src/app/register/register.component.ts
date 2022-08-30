@@ -355,10 +355,9 @@ export class RegisterComponent implements OnInit {
             },
           },
           {
-            className: 'col-6',
+            
             key: 'checkbox',
             type: 'checkbox',
-
             templateOptions: {
               label: 'Additional T- Shirt (INR 250/- Extra)',
             },
@@ -380,7 +379,6 @@ export class RegisterComponent implements OnInit {
           {
             key: 'tcorg',
             type: 'checkbox',
-
             templateOptions: {
               required: true,
               label: ' I Agree to the Organizer Terms & Conditions',
@@ -389,7 +387,7 @@ export class RegisterComponent implements OnInit {
           {
             key: 'tcif',
             type: 'checkbox',
-
+            className: "newclass",
             templateOptions: {
               required: true,
               label: 'I Agree to the iFinish Terms & Conditions',

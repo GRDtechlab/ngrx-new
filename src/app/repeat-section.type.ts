@@ -12,7 +12,7 @@ import { TicketService } from './ticket.service';
     <div class="" *ngIf=" i === currentNumber">
     <h3  class=" card-header"> Ticket {{i+1}} </h3>    
         <div class="card-body">
-    <formly-field  class="card-body" [field]="field"></formly-field>
+    <formly-field [field]="field"></formly-field>
     </div>
     </div>
     
