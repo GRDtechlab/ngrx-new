@@ -69,8 +69,20 @@ export function DateValidator(control: any) {
   console.log({ result });
   return result ? null : { DOBAge: true };
 }
+
+export function DateValidatorTentyOne(control: any) {
+  let day = new Date(control.value).getDay();
+  let month = new Date(control.value).getMonth();
+  let year = new Date(control.value).getFullYear();
+  let result = new Date(year + 21, month - 1, day) <= new Date();
+  console.log({ result });
+  return result ? null : { DOBAgeTwentyOne: true };
+}
 export function DateValidationMessage(err: any, field: any) {
   return `"${field?.formControl?.value}" Age shoulbe be 18 or greater.`;
+}
+export function DateValidationMessageTwentyOne(err: any, field: any) {
+  return `"${field?.formControl?.value}" Age shoulbe be 21 or greater.`;
 }
 
 
@@ -108,6 +120,7 @@ export function DateValidationMessage(err: any, field: any) {
       validators: [
         { name: 'email', validation: EmailValidator },
         { name: 'DOBAge', validation: DateValidator },
+        {name: 'DOBAgeTwentyOne', validation: DateValidatorTentyOne}
     ],
       validationMessages: [
         { name: 'required', message: 'This field is required' },
@@ -117,6 +130,7 @@ export function DateValidationMessage(err: any, field: any) {
         { name: 'min', message: minValidationMessage },
         { name: 'max', message: maxValidationMessage },
         { name: 'DOBAge', message: DateValidationMessage },
+        { name: 'DOBAgeTwentyOne', message: DateValidationMessageTwentyOne },
       ],
     }),
     FormlyModule.forRoot({ extras: { lazyRender: true } }),

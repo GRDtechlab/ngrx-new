@@ -450,8 +450,14 @@ export class RegisterComponent implements OnInit {
   }
   updateFields1(raceId:number ){
     if(raceId === 2){
+      
       let fieldId: any = this.fields1[0]['fieldArray']?.fieldGroup?.findIndex(data => data.key === 'pnumber');
       this.fields1[0]['fieldArray']?.fieldGroup?.splice(fieldId,1);
+
+      let dateField:any = this.fields1[0]['fieldArray']?.fieldGroup?.find(data => data.key === 'date1');
+      dateField['validators']['validation'][0]= 'DOBAgeTwentyOne'
+
+      console.log('hello',this.fields1[0]['fieldArray']?.fieldGroup?.find(data => data.key === 'date1'))
     }
   }
   getFromState(currentInex:any) {
